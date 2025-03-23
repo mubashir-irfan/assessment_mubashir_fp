@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { StocksService } from '@/services';
 import { StockEntryRow } from '@/shared/components';
 import { useStore } from '@/store/store';
+import { StockItem } from '@/types';
 
 type StockPrice = Pick<StockItem, 'ticker' | 'price'>;
 

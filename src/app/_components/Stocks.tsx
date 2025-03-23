@@ -1,10 +1,10 @@
 'use client';
 
 import { StocksService } from '@/services';
-import { SearchInput, StockEntryRow } from '@/shared/components';
+import { SearchInput } from '@/shared/components';
+import { useStore } from '@/store/store';
 import { useEffect, useState } from 'react';
 import StocksList from './StocksList';
-import { useStore } from '@/store/store';
 
 interface StockItem {
   ticker: string;
@@ -16,7 +16,7 @@ const Stocks = () => {
   const [results, setResults] = useState<StockItem[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const { watchStock, watchedStocks } = useStore();
+  const { watchStock } = useStore();
 
   const handleSearch = async (query: string) => {
     if (!query) return;

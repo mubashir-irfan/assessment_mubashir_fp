@@ -1,5 +1,6 @@
 // components/StockItemsListing.tsx
 import { StockEntryRow } from '@/shared/components';
+import { StockItem } from '@/types';
 
 interface StockItemsListingProps {
   stockItems: StockItem[];

@@ -1,5 +1,5 @@
-import axios from 'axios';
 import type { AxiosRequestConfig, AxiosResponse } from 'axios';
+import axios from 'axios';
 import { DateTime } from 'luxon';
 
 const apiKey = process.env.POLYGON_API_KEY ?? 'wm4wmhwYXyiSSvRBM6JUXFNWDnkVUbUX' // for the sake of assessment only. Normally, this would come from env only
@@ -16,7 +16,9 @@ const instance = axios.create({
   }
 });
 
-const createMockResponse = (data: any, config: any) => ({
+// disable eslint no any type rule
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const createMockResponse = (data: any) => ({
   data,
   status: 200,
   statusText: 'OK',
@@ -36,7 +38,7 @@ instance.interceptors.request.use(async (config) => {
         timestamp: Date.now(),
       },
       request_id: 'mocked_request_id',
-    }, config)
+    })
 
     if (mockResponse) {
       config.adapter = async () => mockResponse.data;
@@ -50,7 +52,7 @@ instance.interceptors.request.use(async (config) => {
       resultsCount: 5,
       adjusted: true,
       results: getRandomHistoricalData('01 Apr 2017 00:00 Z', 60),
-    }, config)
+    })
 
     if (mockResponse) {
       config.adapter = async () => mockResponse.data;

@@ -7,12 +7,13 @@ import { CandlestickController, CandlestickElement } from 'chartjs-chart-financi
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
+import { PolygonHistoricalDataResponse } from '@/types';
 
 Chart.register(...registerables, CandlestickController, CandlestickElement, TimeScale, LinearScale, CategoryScale, Tooltip);
 
 const CandlestickChart = () => {
   const chartRef = useRef<HTMLCanvasElement>(null);
-  const [stockData, setStockData] = useState<any[]>();
+  const [stockData, setStockData] = useState<PolygonHistoricalDataResponse['results']>();
   const [loading, setLoading] = useState(true);
 
   const { id: ticker } = useParams();
@@ -21,7 +22,7 @@ const CandlestickChart = () => {
     const fetchData = async () => {
       try {
         const data = await StockService.getHistoricalData('APLE');
-        // @ts-ignore
+        // @ts-expect-error axios typing is not compatible with the actual response type
         setStockData(data.results || []);
       } catch (error) {
         console.error('Error fetching stock data:', error);

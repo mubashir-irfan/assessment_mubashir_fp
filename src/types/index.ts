@@ -1,10 +1,10 @@
-interface StockItem {
+export interface StockItem {
   ticker: string;
   name: string;
   price?: number;
 }
 
-interface PolygonSearchResponse {
+export interface PolygonSearchResponse {
   results?: {
     ticker: string;
     name: string;
@@ -24,12 +24,13 @@ interface PolygonSearchResponse {
   count: number;
 }
 
-interface PolygonHistoricalDataResponse {
+export interface PolygonHistoricalDataResponse {
   ticker: string;
   queryCount: number;
   resultsCount: number;
   adjusted: boolean;
   results?: {
+    x: number; // Timestamp (milliseconds since epoch)
     o: number; // Open price
     h: number; // High price
     l: number; // Low price
@@ -43,7 +44,7 @@ interface PolygonHistoricalDataResponse {
   request_id: string;
 }
 
-interface PolygonLatestTradeResponse {
+export interface PolygonLatestTradeResponse {
   status: string;
   ticker: string;
   last: {
@@ -53,29 +54,3 @@ interface PolygonLatestTradeResponse {
   };
   request_id: string;
 }
-
-// interface AlphaSearchResponse {
-//   bestMatches?: {
-//     '1. symbol': string;
-//     '2. name': string;
-//   }[];
-// }
-
-// interface AlphaQuoteResponse {
-//   'Global Quote': {
-//     '05. price': string;
-//   };
-// }
-
-// interface AlphaHistoricalDataResponse {
-//   'Time Series (Daily Adjusted)': {
-//     [date: string]: {
-//       '1. open': string;
-//       '2. high': string;
-//       '3. low': string;
-//       '4. close': string;
-//       '5. adjusted close': string;
-//       '6. volume': string;
-//     };
-//   };
-// }

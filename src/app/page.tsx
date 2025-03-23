@@ -7,7 +7,7 @@ export default function Home() {
       <main>
         <div className="p-2 max-w-[1280px] text-center bg-yellow-200 rounded-lg shadow-md mx-auto text-black mb-8">
           <p>The Polygon Free API tier has a limit of 5 requests per minute. Hence, live price API is mocked, and the whole stock entry is kept in the store for watch list.
-            Normally, only tickers would have been watched. And the "watched" information would be stored on server-side, with server-state connected through tools like React Query.</p>
+            Normally, only tickers would have been watched. And the watched stocks would be stored on server-side, with server-state connected through tools like React Query.</p>
         </div>
         <div className="flex flex-col-reverse md:flex-row gap-8 md:justify-between w-full max-w-[1280px] md:mx-auto">
           <div className="md:w-1/2">

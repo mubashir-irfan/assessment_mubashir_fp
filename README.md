@@ -26,7 +26,6 @@ stock preview application that relies on a mix of real and mock data. It uses Po
   - Axios for backend communication
 - **Testing**:
   - [Jest](https://jestjs.io/): A delightful JavaScript testing framework.
-- **Development Tools**:
 
 ## Getting Started
 

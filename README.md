@@ -1,96 +1,89 @@
-# Funding Pips - Senior Frontend Engineer Assessment
+# Simple Stocks Demo
 
-## Overview
+[Loom Recording](https://www.loom.com/share/ff0af0d7d748441a912a74e399cd5aeb?sid=8519562d-4972-48b1-a2e4-f93db457316b)
 
-Welcome to the Funding Pips frontend assessment. This challenge is designed to evaluate your ability to **architect, build, and optimize a scalable, high-performance Next.js application**. We are looking for **self-driven engineers** who can make sound technical decisions **without micromanagement**.
+[Vercel Deployment Link](https://assessment-mubashir-fp.vercel.app/)
 
-## The Challenge
 
-### Problem Statement
+Welcome to the **Simple Stocks Demo** repository! This project is a simple yet functional 
+stock preview application that relies on a mix of real and mock data. It uses Polygon.io's free and limited API.
 
-You need to build a **real-time stock tracking application** where users can:
 
-- Search for stocks by name or ticker symbol.
-- View live stock price updates.
-- Analyze historical price trends.
-- Manage a watchlist of selected stocks.
+## Features
 
-### Requirements
+- **Search Tickers**: Search for a stock/ticker
+- **List Stocks**: View the stock's ticker, name and live price (mocked)
+- **Watch Stocks**: Add or remove stocks from a separate watch/monitor list
+- **View Stock Price Trend**: Traditional OCHL CandleStick chart (data mocked due to API limitations)
 
-- **Framework:** Must use **Next.js 15**.
-- **React Components:** Implement proper **Server Components (RSCs) vs. Client Components** for optimized performance.
-- **API Integration:** Use an appropriate **stock API** (e.g. Alpha Vantage, Yahoo Finance, or Polygon.io’s free tier) or mock the data if necessary.
-- **State Management:** Use a scalable approach (e.g. **React Context, Zustand, or Redux Toolkit**).
-- **UI/UX:** The design should be clean and responsive, using **Tailwind CSS**.
+## Tech Stack
 
-## What We Are Looking For
+- **Frontend**:
+  - [Next.js](https://nextjs.org/): A React framework for production.
+  - [React](https://reactjs.org/): A JavaScript library for building user interfaces.
+  - [TypeScript](https://www.typescriptlang.org/): A typed superset of JavaScript.
+  - [Tailwind CSS](https://tailwindcss.com/): A utility-first CSS framework. library for React
+  - Axios for backend communication
+- **Testing**:
+  - [Jest](https://jestjs.io/): A delightful JavaScript testing framework.
+- **Development Tools**:
 
-We want to see **how you approach building a Next.js system from scratch** but note that we don't expect everything to be perfect, it's about trade offs and how you approach problems to solve, you shouldn't need to spend anymore than 4-6 hours here as an example you could implement real time updates or add a poll to a http request, both achieve similar things but one is far quicker to deliver, this would be something to note in your trade offs or decisions made.
+## Getting Started
 
-Key areas we will evaluate:
+Follow these instructions to set up and run the project on your local machine.
 
-### 1️⃣ Architectural Decisions
+### Prerequisites
 
-- Do you correctly structure the project for **scalability and maintainability**?
-- Are you effectively using **React Server Components (RSCs) vs. Client Components**?
-- Are you minimizing client-side JavaScript to optimize performance?
+Ensure you have the following installed:
 
-### 2️⃣ Code Quality & Maintainability
+- [Node.js](https://nodejs.org/) (version 14.x or higher)
+- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
 
-- Is the codebase modular and well-organized?
-- Are there reusable components?
-- Are TypeScript types properly defined and enforced?
+### Installation
 
-### 3️⃣ Performance Optimization
+1. **Clone the repo**
 
-- Are API calls optimized with **ISR (Incremental Static Regeneration), SSR, or caching (`next/cache`)**?
-- Are React components optimized to prevent unnecessary updates?
-- Is Turbopack leveraged for fast builds?
+```
+    git clone https://github.com/mubashir-irfan/assessment_mubashir_fp
+    cd assessment_mubashir_fp
+```
 
-### 4️⃣ Error Handling & Edge Cases
+2. **Installing Dependencies**
 
-- How does the app handle API failures?
-- Does it provide meaningful error messages?
-- How does it handle edge cases like an invalid stock ticker?
+Run `npm install` or `yarn install`
 
-### 5️⃣ Testing Strategy _(Optional but encouraged)_
+### Running the Application
 
-- Optional but it would be good to see at least one unit and one integration test.
-- Did you include unit or integration tests?
-- Are Jest and Testing Library used effectively?
-- How would you ensure the app remains stable as it scales?
 
-## Technical Constraints
+2. **Starting the Frontend Application**
 
-- **Must use Next.js 15, React 19, and TypeScript**.
-- **Tailwind CSS** is the preferred styling solution.
-- **State management can be done via React Context, Zustand, or Redux Toolkit**.
+Run `npm run dev or yarn dev`
+By default, the application will be accessible at `http://localhost:3000`
 
-## Bonus Points (Not Required but Impressive)
+## Project Structure
 
-- Implement WebSockets for real-time stock price updates.
-- Use **ISR (Incremental Static Regeneration) or SSR (Server-Side Rendering)** effectively.
-- Provide a **Dockerfile** for easy deployment.
-- Implement authentication (OAuth, Firebase, etc.) for user watchlists.
-- Optimize rendering using **caching, and or efficient data fetching strategies**.
+The application follows a modular, feature-isolation structure. The structure envisions the app size and team growing with time, hence provides a feature-level isolation so that teams can work without unnecessary conflicts.
 
-## Deliverables
+- Global entities are present directly inside src (e.g src/contexts hosts global contexts)
+- Feature level entities (components,types,hooks) have their isolated structure inside src/app/[feature])
+- Shared entities are present inside src/shared
 
-- A **GitHub repository** with your implementation.
-- A **README file** explaining:
-  - Your architectural decisions.
-  - How to run the project.
-  - Any trade-offs or optimizations you made.
-- (Optional) A short Loom video or document explaining your approach.
+## Trade Offs
 
-## Submission Instructions
+Since free stock APIs are highly limited, I have relied on a mix of mock data in most areas.
 
-1. Clone this repository.
-2. Complete the implementation.
-3. Submit a link to your repo and ideally a link to your working application on vercel/netlify or equivalent.
+In a production environment, I would approach things differently. I would:
 
-## Final Notes
+- write a custom AuthN and AuthZ layer for identity and access management
+- write a reusable, generic API Integration layer using React Query on top of axios instance to centralize the communication and error handling
+- write a Notification service based on App Theme to deliver error and success messages
 
-This is not just about "getting it working" - we are looking for **scalability, performance, and decision-making skills**. Show us how you think as a **senior engineer**.
+## Available scripts
 
-Good luck, and happy coding! 🚀
+In the project directory, you can run:
+
+- `npm run dev`: Starts the development server.
+- `npm run build`: Builds the application for production.
+- `npm run start`: Runs the built application in production mode.
+- `npm run lint`: Lints the codebase for potential issues.
+- `npm run test`: Runs the test suite.
